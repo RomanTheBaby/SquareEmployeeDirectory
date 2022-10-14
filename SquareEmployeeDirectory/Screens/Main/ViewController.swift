@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         enum EmployeeImage {
             static let maxSize = CGSize(width: 32, height: 32)
         }
+        
+        enum NavigationTitle {
+            static let `default` = "Employee Board"
+            static let loading = "Loading..."
+        }
     }
     
     
@@ -111,7 +116,8 @@ class ViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupInterface() {
-        title = "Employee Board"
+        title = Constants.NavigationTitle.default
+        
         navigationController?.setToolbarHidden(false, animated: false)
         toolbarItems = [
             .init(title: "Normal List", style: .plain, target: self, action: #selector(handleFetchNormalListFetchTap(_:))),
@@ -147,7 +153,7 @@ class ViewController: UIViewController {
     }
     
     private func fetchEmployees(listType: EmployeesFetchingService.ListType = .normal) {
-        collectionView.refreshControl?.beginRefreshing()
+        title = Constants.NavigationTitle.loading
         
         employeesFetchingService.fetchEmployees(listType: listType) { [weak self] result in
             DispatchQueue.main.async {
@@ -167,6 +173,7 @@ class ViewController: UIViewController {
                     self?.updateSnapshot(with: employeeList.employees)
                 }
                 
+                self?.title = "Employee Board"
                 self?.collectionView.refreshControl?.endRefreshing()
             }
         }
