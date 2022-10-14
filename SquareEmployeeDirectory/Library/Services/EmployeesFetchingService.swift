@@ -12,6 +12,14 @@ import Foundation
 
 class EmployeesFetchingService {
     
+    // MARK: - EmployeeListRequestType
+
+    enum ResultType {
+        case normal
+        case empty
+        case malformed
+    }
+    
     
     // MARK: - Private Properties
     
@@ -28,10 +36,10 @@ class EmployeesFetchingService {
     // MARK: - Fetching
     
     func fetchEmployees(
-        requestType: EmployeeListRequestType = .normal,
+        resultType: ResultType = .normal,
         completion: @escaping (Result<EmployeeList, Error>) -> Void
     ) {
-        let request = EmployeesListRequest(requestType: .normal)
+        let request = EmployeesListRequest(resultType: resultType)
         networkService.makeRequest(request, completion: completion)
     }
     
@@ -40,38 +48,11 @@ class EmployeesFetchingService {
 
 // MARK: - EmployeesListRequest
 
-struct EmployeesListRequest: Request {
+private struct EmployeesListRequest: Request {
     typealias Model = EmployeeList
     
     var path: String {
-        requestType.path
-    }
-    
-    var method: RequestType {
-        .get
-    }
-    
-    var contentType: String {
-        ""
-    }
-    
-    private var requestType: EmployeeListRequestType
-    
-    init(requestType: EmployeeListRequestType) {
-        self.requestType = requestType
-    }
-    
-}
-
-// MARK: - EmployeeListRequestType
-
-enum EmployeeListRequestType {
-    case normal
-    case empty
-    case malformed
-    
-    var path: String {
-        switch self {
+        switch resultType {
         case .normal:
             return "employees.json"
             
@@ -83,4 +64,19 @@ enum EmployeeListRequestType {
             
         }
     }
+    
+    var method: RequestType {
+        .get
+    }
+    
+    var contentType: String {
+        ""
+    }
+    
+    private var resultType: EmployeesFetchingService.ResultType
+    
+    init(resultType: EmployeesFetchingService.ResultType) {
+        self.resultType = resultType
+    }
+    
 }
