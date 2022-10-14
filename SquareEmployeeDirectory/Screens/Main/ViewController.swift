@@ -146,10 +146,10 @@ class ViewController: UIViewController {
         collectionView.refreshControl = refreshControl
     }
     
-    private func fetchEmployees(resultType: EmployeesFetchingService.ResultType = .normal) {
+    private func fetchEmployees(listType: EmployeesFetchingService.ListType = .normal) {
         collectionView.refreshControl?.beginRefreshing()
         
-        employeesFetchingService.fetchEmployees(resultType: resultType) { [weak self] result in
+        employeesFetchingService.fetchEmployees(listType: listType) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case let .failure(error):
@@ -185,19 +185,19 @@ class ViewController: UIViewController {
     // MARK: - Actions Handling
     
     @objc private func handleFetchEmptyListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(resultType: .empty)
+        fetchEmployees(listType: .empty)
     }
     
     @objc private func handleFetchMalformedListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(resultType: .malformed)
+        fetchEmployees(listType: .malformed)
     }
     
     @objc private func handleFetchNormalListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(resultType: .normal)
+        fetchEmployees(listType: .normal)
     }
     
     @objc private func handleRefreshControlValueChanged(_ refreshControl: UIRefreshControl) {
-        fetchEmployees(resultType: .normal)
+        fetchEmployees(listType: .normal)
     }
     
 }

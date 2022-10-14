@@ -15,7 +15,7 @@ class EmployeesFetchingService {
     
     // MARK: - EmployeeListRequestType
 
-    enum ResultType {
+    enum ListType {
         case normal
         case empty
         case malformed
@@ -37,10 +37,10 @@ class EmployeesFetchingService {
     // MARK: - Fetching
     
     func fetchEmployees(
-        resultType: ResultType = .normal,
+        listType: ListType = .normal,
         completion: @escaping (Result<EmployeeList, Error>) -> Void
     ) {
-        let request = EmployeesListRequest(resultType: resultType)
+        let request = EmployeesListRequest(listType: listType)
         networkService.makeRequest(request, completion: completion)
     }
     
@@ -53,7 +53,7 @@ private struct EmployeesListRequest: Request {
     typealias Model = EmployeeList
     
     var path: String {
-        switch resultType {
+        switch listType {
         case .normal:
             return "employees.json"
             
@@ -70,10 +70,10 @@ private struct EmployeesListRequest: Request {
         .get
     }
     
-    private var resultType: EmployeesFetchingService.ResultType
+    private var listType: EmployeesFetchingService.ListType
     
-    init(resultType: EmployeesFetchingService.ResultType) {
-        self.resultType = resultType
+    init(listType: EmployeesFetchingService.ListType) {
+        self.listType = listType
     }
     
 }
