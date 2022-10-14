@@ -29,7 +29,7 @@ final class AppCoordinator {
     // MARK: - Public Methods
     
     func start() {
-        window.rootViewController = UINavigationController(rootViewController: ViewController())
+        window.rootViewController = UINavigationController(rootViewController: EmployeeBoardViewController())
         window.makeKeyAndVisible()
     }
     

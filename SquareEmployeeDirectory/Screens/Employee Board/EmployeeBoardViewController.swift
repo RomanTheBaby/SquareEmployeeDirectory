@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+// TODO: Add unit tests (i.e for target)
+// TODO: Add Readme
+class EmployeeBoardViewController: UIViewController {
     
 
     // MARK: - Section
@@ -16,6 +18,8 @@ class ViewController: UIViewController {
         case employees
     }
     
+    
+    // MARK: - Constants
     
     enum Constants {
         enum EmployeeImage {
@@ -40,9 +44,6 @@ class ViewController: UIViewController {
         
         return collectionView
     }()
-    
-    // TODO: Add unit tests (i.e for target)
-    // TODO: Add Readme
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Employee> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Employee> { cell, indexPath, employee in
@@ -118,6 +119,12 @@ class ViewController: UIViewController {
     private func setupInterface() {
         title = Constants.NavigationTitle.default
         
+        setupToolbar()
+        setupCollectionView()
+        setupRefreshControl()
+    }
+    
+    private func setupToolbar() {
         navigationController?.setToolbarHidden(false, animated: false)
         toolbarItems = [
             .init(title: "Normal List", style: .plain, target: self, action: #selector(handleFetchNormalListFetchTap(_:))),
@@ -126,9 +133,6 @@ class ViewController: UIViewController {
             .init(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
             .init(title: "Empty List", style: .plain, target: self, action: #selector(handleFetchEmptyListFetchTap(_:))),
         ]
-        
-        setupCollectionView()
-        setupRefreshControl()
     }
     
     private func setupCollectionView() {

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF4732D528F8B359005E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D428F8B359005E271A /* AppDelegate.swift */; };
 		FF4732D728F8B359005E271A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D628F8B359005E271A /* SceneDelegate.swift */; };
-		FF4732D928F8B359005E271A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D828F8B359005E271A /* ViewController.swift */; };
+		FF4732D928F8B359005E271A /* EmployeeBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D828F8B359005E271A /* EmployeeBoardViewController.swift */; };
 		FF4732DE28F8B35B005E271A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4732DD28F8B35B005E271A /* Assets.xcassets */; };
 		FF4732E128F8B35B005E271A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4732DF28F8B35B005E271A /* LaunchScreen.storyboard */; };
 		FF4732F028F8B43C005E271A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732EF28F8B43C005E271A /* NetworkService.swift */; };
@@ -29,7 +29,7 @@
 		FF4732D128F8B359005E271A /* SquareEmployeeDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareEmployeeDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4732D428F8B359005E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4732D628F8B359005E271A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF4732D828F8B359005E271A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF4732D828F8B359005E271A /* EmployeeBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeBoardViewController.swift; sourceTree = "<group>"; };
 		FF4732DD28F8B35B005E271A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4732E028F8B35B005E271A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF4732E228F8B35B005E271A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,9 +86,9 @@
 		FF4732E828F8B386005E271A /* App */ = {
 			isa = PBXGroup;
 			children = (
+				FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */,
 				FF4732D428F8B359005E271A /* AppDelegate.swift */,
 				FF4732D628F8B359005E271A /* SceneDelegate.swift */,
-				FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 		FF4732EB28F8B3A1005E271A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				FF4732ED28F8B3B3005E271A /* Main */,
+				FF4732ED28F8B3B3005E271A /* Employee Board */,
 				FF4732EC28F8B3A8005E271A /* Launch */,
 			);
 			path = Screens;
@@ -131,21 +131,21 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		FF4732ED28F8B3B3005E271A /* Main */ = {
+		FF4732ED28F8B3B3005E271A /* Employee Board */ = {
 			isa = PBXGroup;
 			children = (
-				FF4732D828F8B359005E271A /* ViewController.swift */,
+				FF4732D828F8B359005E271A /* EmployeeBoardViewController.swift */,
 			);
-			path = Main;
+			path = "Employee Board";
 			sourceTree = "<group>";
 		};
 		FF4732EE28F8B42E005E271A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FF4732EF28F8B43C005E271A /* NetworkService.swift */,
-				FF6C57D728F8FB90005892AC /* EmployeesFetchingService.swift */,
-				FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */,
-				FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */,
+				FF6C57EF28F9E9E1005892AC /* Employee Fetching */,
+				FF6C57ED28F9E9C9005892AC /* Image Fetching */,
+				FF6C57EE28F9E9D1005892AC /* Image Persistance */,
+				FF6C57EC28F9E9C1005892AC /* Network */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -153,9 +153,9 @@
 		FF4732F128F8B52B005E271A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FF6C57E328F9B472005892AC /* RequestType */,
+				FF6C57E328F9B472005892AC /* Request Type */,
 				FF6C57DE28F9AF11005892AC /* Employee */,
-				FF6C57DF28F9AF1A005892AC /* EmployeeList */,
+				FF6C57DF28F9AF1A005892AC /* Employee List */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,12 +177,12 @@
 			path = Employee;
 			sourceTree = "<group>";
 		};
-		FF6C57DF28F9AF1A005892AC /* EmployeeList */ = {
+		FF6C57DF28F9AF1A005892AC /* Employee List */ = {
 			isa = PBXGroup;
 			children = (
 				FF4732F428F8BF96005E271A /* EmployeeList.swift */,
 			);
-			path = EmployeeList;
+			path = "Employee List";
 			sourceTree = "<group>";
 		};
 		FF6C57E028F9B0B5005892AC /* Protocols */ = {
@@ -193,12 +193,44 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		FF6C57E328F9B472005892AC /* RequestType */ = {
+		FF6C57E328F9B472005892AC /* Request Type */ = {
 			isa = PBXGroup;
 			children = (
 				FF6C57E428F9B477005892AC /* RequestType.swift */,
 			);
-			path = RequestType;
+			path = "Request Type";
+			sourceTree = "<group>";
+		};
+		FF6C57EC28F9E9C1005892AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FF4732EF28F8B43C005E271A /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FF6C57ED28F9E9C9005892AC /* Image Fetching */ = {
+			isa = PBXGroup;
+			children = (
+				FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */,
+			);
+			path = "Image Fetching";
+			sourceTree = "<group>";
+		};
+		FF6C57EE28F9E9D1005892AC /* Image Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */,
+			);
+			path = "Image Persistance";
+			sourceTree = "<group>";
+		};
+		FF6C57EF28F9E9E1005892AC /* Employee Fetching */ = {
+			isa = PBXGroup;
+			children = (
+				FF6C57D728F8FB90005892AC /* EmployeesFetchingService.swift */,
+			);
+			path = "Employee Fetching";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4732D928F8B359005E271A /* ViewController.swift in Sources */,
+				FF4732D928F8B359005E271A /* EmployeeBoardViewController.swift in Sources */,
 				FF4732D528F8B359005E271A /* AppDelegate.swift in Sources */,
 				FF6C57DD28F9ACEE005892AC /* UIViewControllerExtension.swift in Sources */,
 				FF4732F028F8B43C005E271A /* NetworkService.swift in Sources */,
