@@ -21,6 +21,15 @@ struct Employee: Hashable, Identifiable, Codable {
     var type: String // TODO
     
     
+    var photoURL: URL? {
+        guard let rawImageLink = photoURLLarge ?? photoURLSmall else {
+            return nil
+        }
+        
+        return URL(string: rawImageLink)
+    }
+    
+    
     // MARK: - CodingKeys
     
     enum CodingKeys: String, CodingKey {

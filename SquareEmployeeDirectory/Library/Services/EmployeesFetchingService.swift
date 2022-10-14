@@ -12,6 +12,7 @@ import Foundation
 
 class EmployeesFetchingService {
     
+    
     // MARK: - EmployeeListRequestType
 
     enum ResultType {
@@ -67,10 +68,6 @@ private struct EmployeesListRequest: Request {
     
     var method: RequestType {
         .get
-    }
-    
-    var contentType: String {
-        ""
     }
     
     private var resultType: EmployeesFetchingService.ResultType

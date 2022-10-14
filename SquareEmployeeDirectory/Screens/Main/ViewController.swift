@@ -17,6 +17,13 @@ class ViewController: UIViewController {
     }
     
     
+    enum Constants {
+        enum EmployeeImage {
+            static let maxSize = CGSize(width: 32, height: 32)
+        }
+    }
+    
+    
     // MARK: - Private Properties
     
     private lazy var collectionView: UICollectionView = {
@@ -29,10 +36,42 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
+    // TODO: Implement fetching of malformed and empty lists
+    // TODO: Add unit tests (i.e for target)
+    // TODO: Add Readme
+    
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Employee> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Employee> { cell, indexPath, employee in
             var contentConfiguration = cell.defaultContentConfiguration()
             contentConfiguration.text = employee.fullName
+            contentConfiguration.secondaryText = employee.team
+            contentConfiguration.imageProperties.maximumSize = Constants.EmployeeImage.maxSize
+            contentConfiguration.imageProperties.reservedLayoutSize = Constants.EmployeeImage.maxSize
+            contentConfiguration.imageProperties.cornerRadius = Constants.EmployeeImage.maxSize.width / 2
+            
+            if let url = employee.photoURL {
+                if let cachedImage = self.imageFetchingService.cachedImage(for: url) {
+                    contentConfiguration.image = cachedImage
+                } else {
+                    contentConfiguration.image = #imageLiteral(resourceName: "AvatarPlaceholder.png")
+                    self.imageFetchingService.loadImage(at: url) { [weak self] result in
+                        guard let self = self, case let .success(image) = result else {
+                            return
+                        }
+                        
+                        DispatchQueue.main.async {
+                            var updatedSnapshot = self.dataSource.snapshot()
+                            updatedSnapshot.reloadItems([employee])
+                            self.dataSource.apply(updatedSnapshot, animatingDifferences: true)
+                        }
+                        
+                        // contentConfiguration.image = image
+                        // DispatchQueue.main.async {
+                        //     cell?.contentConfiguration = contentConfiguration
+                        // }
+                    }
+                }
+            }
             
             cell.contentConfiguration = contentConfiguration
         }
@@ -43,6 +82,7 @@ class ViewController: UIViewController {
     }()
     
     private let employeesFetchingService: EmployeesFetchingService
+    private let imageFetchingService: ImageFetchingService = .init()
     
     
     // MARK: - Init
@@ -62,7 +102,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         setupCollectionView()
         setupRefreshControl()
@@ -94,10 +133,8 @@ class ViewController: UIViewController {
         collectionView.refreshControl = refreshControl
     }
     
-    private let networkService = NetworkService()
-    
     private func fetchEmployees() {
-        let request = URLRequest(url: URL(string: "https://s3.amazonaws.com/sq-mobile-interview/employees.json")!)
+        collectionView.refreshControl?.beginRefreshing()
         
         employeesFetchingService.fetchEmployees { [weak self] result in
             DispatchQueue.main.async {
@@ -110,19 +147,6 @@ class ViewController: UIViewController {
                 }
                 
                 self?.collectionView.refreshControl?.endRefreshing()
-            }
-        }
-        
-        Task {
-            do {
-                let smth = try await networkService.makeContinuationRequest(request)
-                
-                let decoder = JSONDecoder()
-                let decodedObject = try decoder.decode(EmployeeList.self, from: smth)
-                print(">>>Fetched with continuation: ", decodedObject.employees.count)
-                
-            } catch let error {
-                showAlert(title: "Error processing Employees List response", message: error.localizedDescription)
             }
         }
         

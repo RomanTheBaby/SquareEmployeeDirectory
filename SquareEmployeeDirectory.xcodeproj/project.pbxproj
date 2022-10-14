@@ -20,6 +20,8 @@
 		FF6C57DD28F9ACEE005892AC /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57DC28F9ACEE005892AC /* UIViewControllerExtension.swift */; };
 		FF6C57E228F9B0BE005892AC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E128F9B0BE005892AC /* Request.swift */; };
 		FF6C57E528F9B477005892AC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E428F9B477005892AC /* RequestType.swift */; };
+		FF6C57E728F9CBC1005892AC /* ImageFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */; };
+		FF6C57E928F9DDBB005892AC /* ImagePersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		FF6C57DC28F9ACEE005892AC /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		FF6C57E128F9B0BE005892AC /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		FF6C57E428F9B477005892AC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchingService.swift; sourceTree = "<group>"; };
+		FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersistanceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			children = (
 				FF4732EF28F8B43C005E271A /* NetworkService.swift */,
 				FF6C57D728F8FB90005892AC /* EmployeesFetchingService.swift */,
+				FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */,
+				FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 				FF4732F328F8B533005E271A /* Employee.swift in Sources */,
 				FF6C57E228F9B0BE005892AC /* Request.swift in Sources */,
 				FF6C57E528F9B477005892AC /* RequestType.swift in Sources */,
+				FF6C57E728F9CBC1005892AC /* ImageFetchingService.swift in Sources */,
 				FF4732D728F8B359005E271A /* SceneDelegate.swift in Sources */,
 				FF6C57DB28F9ACD4005892AC /* NSLayoutConstraintExtension.swift in Sources */,
+				FF6C57E928F9DDBB005892AC /* ImagePersistanceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
