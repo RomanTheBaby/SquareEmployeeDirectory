@@ -10,18 +10,6 @@ import XCTest
 final class RequestTests: XCTestCase {
     
     
-    // MARK: - DummyEmployeeRequest
-    
-    struct DummyEmployeeRequest: Request {
-        
-        typealias Model = Employee
-        
-        var path: String
-        var method: RequestType
-        
-    }
-    
-    
     // MARK: - Private Properties
     
     private let baseURL = "https://s3.amazonaws.com/sq-mobile-interview"
@@ -31,17 +19,17 @@ final class RequestTests: XCTestCase {
     
     func testGetRequestBuildsSuccessfully() {
         let requestPath = "/funnyName"
-        let dummyRequest = DummyEmployeeRequest(path: requestPath, method: .get)
+        let mockRequest = MockSingleEmployeeRequest(path: requestPath, method: .get)
         
         let expectedRequest = URLRequest(url: URL(string: baseURL + requestPath)!)
         
-        XCTAssertEqual(expectedRequest, dummyRequest.buildRequest(withBaseUrl: URL(string: baseURL)!))
+        XCTAssertEqual(expectedRequest, mockRequest.buildURLRequest(withBaseURL: URL(string: baseURL)!))
     }
     
     func testPostRequestBuildsSuccessfully() {
         let requestPath = "/funnyName"
-        let dummyRequest = DummyEmployeeRequest(path: requestPath, method: .post)
-        let dummyURLRequest = dummyRequest.buildRequest(withBaseUrl: URL(string: baseURL)!)
+        let dummyRequest = MockSingleEmployeeRequest(path: requestPath, method: .post)
+        let dummyURLRequest = dummyRequest.buildURLRequest(withBaseURL: URL(string: baseURL)!)
         
         var expectedRequest = URLRequest(url: URL(string: baseURL + requestPath)!)
         expectedRequest.httpMethod = RequestType.post.rawValue

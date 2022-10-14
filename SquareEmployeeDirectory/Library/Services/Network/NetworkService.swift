@@ -8,18 +8,38 @@
 import Foundation
 
 
+// TODO: Come up with better name
+protocol URLSessionCompatible {
+    func makeRequest(
+        _ request: URLRequest,
+        completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void
+    )
+}
+
+
+extension URLSession: URLSessionCompatible {
+    func makeRequest(
+        _ request: URLRequest,
+        completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void
+    ) {
+        let dataTask = dataTask(with: request, completionHandler: completionHandler)
+        dataTask.resume()
+    }
+    
+}
+
 class NetworkService {
     
     
     // MARK: - Private Properties
     
     private let baseURL: URL
-    private let urlSession: URLSession
+    private let urlSession: URLSessionCompatible
     
     
     // MARK: - Init
     
-    init(baseURL: URL = .squareAPI, urlSession: URLSession = .shared) {
+    init(baseURL: URL = .squareAPI, urlSession: URLSessionCompatible = URLSession.shared) {
         self.baseURL = baseURL
         self.urlSession = urlSession
     }
@@ -27,8 +47,8 @@ class NetworkService {
     
     // MARK: - Public Methods
     
-    func makeRequest<R: Request>(_ requestModel: R, completion: @escaping (Result<R.Model, Error>) -> Void) {
-        guard let request = requestModel.buildRequest(withBaseUrl: baseURL) else {
+    func makeRequest<R: Request>(_ request: R, completion: @escaping (Result<R.Model, Error>) -> Void) {
+        guard let request = request.buildURLRequest(withBaseURL: baseURL) else {
             return
         }
         
@@ -50,7 +70,7 @@ class NetworkService {
     }
     
     func makeRequest(_ request: URLRequest, _ completion: @escaping (Result<Data, Error>) -> Void) {
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        urlSession.makeRequest(request) { data, _, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -59,7 +79,7 @@ class NetworkService {
             if let data = data {
                 completion(.success(data))
             }
-        }.resume()
+        }
     }
     
     func makeContinuationRequest(_ request: URLRequest) async throws -> Data {

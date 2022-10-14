@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct EmployeeList: Codable {
+struct EmployeeList: Codable, Equatable {
     let employees: [Employee]
 }

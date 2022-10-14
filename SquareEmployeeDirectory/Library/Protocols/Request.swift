@@ -31,7 +31,7 @@ extension Request {
         nil
     }
     
-    func buildRequest(withBaseUrl baseURL: URL) -> URLRequest? {
+    func buildURLRequest(withBaseURL baseURL: URL) -> URLRequest? {
         guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
             return nil
         }

@@ -64,13 +64,3 @@ class ImageFetchingService {
     }
     
 }
-
-private extension NSError {
-    convenience init(domain: String = "com.sq-test", code: Int, localizedDescription: String) {
-        self.init(
-            domain: domain,
-            code: code,
-            userInfo: [NSLocalizedDescriptionKey: localizedDescription]
-        )
-    }
-}

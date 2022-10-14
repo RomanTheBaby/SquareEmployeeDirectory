@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: Add unit tests (i.e for target)
 // TODO: Add Readme
 class EmployeeBoardViewController: UIViewController {
     

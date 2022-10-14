@@ -27,6 +27,13 @@
 		FF6C57FF28F9EB8C005892AC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E128F9B0BE005892AC /* Request.swift */; };
 		FF6C580028F9EC05005892AC /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732F228F8B533005E271A /* Employee.swift */; };
 		FF6C580128F9EC1C005892AC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E428F9B477005892AC /* RequestType.swift */; };
+		FF6C580328F9F177005892AC /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580228F9F177005892AC /* NetworkTests.swift */; };
+		FF6C580428F9F3A3005892AC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732EF28F8B43C005E271A /* NetworkService.swift */; };
+		FF6C580728FA1F9D005892AC /* MockSingleEmployeeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580628FA1F9D005892AC /* MockSingleEmployeeRequest.swift */; };
+		FF6C580928FA2670005892AC /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580828FA2670005892AC /* NSErrorExtension.swift */; };
+		FF6C580A28FA26C5005892AC /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580828FA2670005892AC /* NSErrorExtension.swift */; };
+		FF6C580C28FA29EB005892AC /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580B28FA29EB005892AC /* MockURLSession.swift */; };
+		FF6C580D28FA2A8B005892AC /* EmployeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732F428F8BF96005E271A /* EmployeeList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,10 @@
 		FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FF6C57F428F9EB53005892AC /* SquareEmployeeDirectoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquareEmployeeDirectoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF6C57FD28F9EB62005892AC /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
+		FF6C580228F9F177005892AC /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		FF6C580628FA1F9D005892AC /* MockSingleEmployeeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleEmployeeRequest.swift; sourceTree = "<group>"; };
+		FF6C580828FA2670005892AC /* NSErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
+		FF6C580B28FA29EB005892AC /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +199,7 @@
 		FF6C57D928F9ACC7005892AC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FF6C580828FA2670005892AC /* NSErrorExtension.swift */,
 				FF6C57DA28F9ACD4005892AC /* NSLayoutConstraintExtension.swift */,
 				FF6C57DC28F9ACEE005892AC /* UIViewControllerExtension.swift */,
 			);
@@ -261,9 +273,20 @@
 		FF6C57F528F9EB54005892AC /* SquareEmployeeDirectoryTests */ = {
 			isa = PBXGroup;
 			children = (
+				FF6C580528FA1F8F005892AC /* Models Mocks */,
 				FF6C57FD28F9EB62005892AC /* RequestTests.swift */,
+				FF6C580228F9F177005892AC /* NetworkTests.swift */,
 			);
 			path = SquareEmployeeDirectoryTests;
+			sourceTree = "<group>";
+		};
+		FF6C580528FA1F8F005892AC /* Models Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FF6C580628FA1F9D005892AC /* MockSingleEmployeeRequest.swift */,
+				FF6C580B28FA29EB005892AC /* MockURLSession.swift */,
+			);
+			path = "Models Mocks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +391,7 @@
 			files = (
 				FF4732D928F8B359005E271A /* EmployeeBoardViewController.swift in Sources */,
 				FF4732D528F8B359005E271A /* AppDelegate.swift in Sources */,
+				FF6C580928FA2670005892AC /* NSErrorExtension.swift in Sources */,
 				FF6C57DD28F9ACEE005892AC /* UIViewControllerExtension.swift in Sources */,
 				FF4732F028F8B43C005E271A /* NetworkService.swift in Sources */,
 				FF6C57D828F8FB90005892AC /* EmployeesFetchingService.swift in Sources */,
@@ -388,9 +412,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6C580028F9EC05005892AC /* Employee.swift in Sources */,
+				FF6C580A28FA26C5005892AC /* NSErrorExtension.swift in Sources */,
 				FF6C57FF28F9EB8C005892AC /* Request.swift in Sources */,
+				FF6C580328F9F177005892AC /* NetworkTests.swift in Sources */,
 				FF6C57FE28F9EB62005892AC /* RequestTests.swift in Sources */,
+				FF6C580428F9F3A3005892AC /* NetworkService.swift in Sources */,
+				FF6C580C28FA29EB005892AC /* MockURLSession.swift in Sources */,
+				FF6C580D28FA2A8B005892AC /* EmployeeList.swift in Sources */,
 				FF6C580128F9EC1C005892AC /* RequestType.swift in Sources */,
+				FF6C580728FA1F9D005892AC /* MockSingleEmployeeRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Employee: Hashable, Identifiable, Codable {
+struct Employee: Hashable, Identifiable, Codable, Equatable {
      
     var id: String
     var fullName: String
