@@ -36,7 +36,6 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    // TODO: Implement fetching of malformed and empty lists
     // TODO: Add unit tests (i.e for target)
     // TODO: Add Readme
     
@@ -103,14 +102,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCollectionView()
-        setupRefreshControl()
+        setupInterface()
         fetchEmployees()
         
     }
 
     
     // MARK: - Private Methods
+    
+    private func setupInterface() {
+        title = "Employee Board"
+        navigationController?.setToolbarHidden(false, animated: false)
+        toolbarItems = [
+            .init(title: "Normal List", style: .plain, target: self, action: #selector(handleFetchNormalListFetchTap(_:))),
+            .init(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            .init(title: "Malformed List", style: .plain, target: self, action: #selector(handleFetchMalformedListFetchTap(_:))),
+            .init(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            .init(title: "Empty List", style: .plain, target: self, action: #selector(handleFetchEmptyListFetchTap(_:))),
+        ]
+        
+        setupCollectionView()
+        setupRefreshControl()
+    }
     
     private func setupCollectionView() {
         collectionView.dataSource = dataSource
@@ -133,14 +146,22 @@ class ViewController: UIViewController {
         collectionView.refreshControl = refreshControl
     }
     
-    private func fetchEmployees() {
+    private func fetchEmployees(resultType: EmployeesFetchingService.ResultType = .normal) {
         collectionView.refreshControl?.beginRefreshing()
         
-        employeesFetchingService.fetchEmployees { [weak self] result in
+        employeesFetchingService.fetchEmployees(resultType: resultType) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case let .failure(error):
-                    self?.showAlert(title: "Error fetching Employees List", message: error.localizedDescription)
+                    self?.showAlert(
+                        title: "Error fetching Employees List",
+                        message: error.localizedDescription,
+                        actions: [
+                            .init(title: "Clear current list?", style: .default, handler: { _ in
+                                self?.updateSnapshot(with: [])
+                            }),
+                        ]
+                    )
                     
                 case let .success(employeeList):
                     self?.updateSnapshot(with: employeeList.employees)
@@ -163,8 +184,20 @@ class ViewController: UIViewController {
     
     // MARK: - Actions Handling
     
+    @objc private func handleFetchEmptyListFetchTap(_ sender: UIBarButtonItem) {
+        fetchEmployees(resultType: .empty)
+    }
+    
+    @objc private func handleFetchMalformedListFetchTap(_ sender: UIBarButtonItem) {
+        fetchEmployees(resultType: .malformed)
+    }
+    
+    @objc private func handleFetchNormalListFetchTap(_ sender: UIBarButtonItem) {
+        fetchEmployees(resultType: .normal)
+    }
+    
     @objc private func handleRefreshControlValueChanged(_ refreshControl: UIRefreshControl) {
-        fetchEmployees()
+        fetchEmployees(resultType: .normal)
     }
     
 }

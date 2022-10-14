@@ -22,6 +22,7 @@
 		FF6C57E528F9B477005892AC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E428F9B477005892AC /* RequestType.swift */; };
 		FF6C57E728F9CBC1005892AC /* ImageFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */; };
 		FF6C57E928F9DDBB005892AC /* ImagePersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */; };
+		FF6C57EB28F9DF5F005892AC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FF6C57E428F9B477005892AC /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchingService.swift; sourceTree = "<group>"; };
 		FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersistanceService.swift; sourceTree = "<group>"; };
+		FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				FF4732D428F8B359005E271A /* AppDelegate.swift */,
 				FF4732D628F8B359005E271A /* SceneDelegate.swift */,
+				FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				FF4732F028F8B43C005E271A /* NetworkService.swift in Sources */,
 				FF6C57D828F8FB90005892AC /* EmployeesFetchingService.swift in Sources */,
 				FF4732F528F8BF96005E271A /* EmployeeList.swift in Sources */,
+				FF6C57EB28F9DF5F005892AC /* AppCoordinator.swift in Sources */,
 				FF4732F328F8B533005E271A /* Employee.swift in Sources */,
 				FF6C57E228F9B0BE005892AC /* Request.swift in Sources */,
 				FF6C57E528F9B477005892AC /* RequestType.swift in Sources */,
