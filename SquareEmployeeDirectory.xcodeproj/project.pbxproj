@@ -23,7 +23,21 @@
 		FF6C57E728F9CBC1005892AC /* ImageFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */; };
 		FF6C57E928F9DDBB005892AC /* ImagePersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */; };
 		FF6C57EB28F9DF5F005892AC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */; };
+		FF6C57FE28F9EB62005892AC /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57FD28F9EB62005892AC /* RequestTests.swift */; };
+		FF6C57FF28F9EB8C005892AC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E128F9B0BE005892AC /* Request.swift */; };
+		FF6C580028F9EC05005892AC /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732F228F8B533005E271A /* Employee.swift */; };
+		FF6C580128F9EC1C005892AC /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C57E428F9B477005892AC /* RequestType.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF6C57F828F9EB54005892AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4732C928F8B359005E271A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF4732D028F8B359005E271A;
+			remoteInfo = SquareEmployeeDirectory;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FF4732D128F8B359005E271A /* SquareEmployeeDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareEmployeeDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,10 +58,19 @@
 		FF6C57E628F9CBC1005892AC /* ImageFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchingService.swift; sourceTree = "<group>"; };
 		FF6C57E828F9DDBB005892AC /* ImagePersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersistanceService.swift; sourceTree = "<group>"; };
 		FF6C57EA28F9DF5F005892AC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FF6C57F428F9EB53005892AC /* SquareEmployeeDirectoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquareEmployeeDirectoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6C57FD28F9EB62005892AC /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FF4732CE28F8B359005E271A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF6C57F128F9EB53005892AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -61,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4732D328F8B359005E271A /* SquareEmployeeDirectory */,
+				FF6C57F528F9EB54005892AC /* SquareEmployeeDirectoryTests */,
 				FF4732D228F8B359005E271A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4732D128F8B359005E271A /* SquareEmployeeDirectory.app */,
+				FF6C57F428F9EB53005892AC /* SquareEmployeeDirectoryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,9 +121,9 @@
 		FF4732E928F8B38D005E271A /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				FF6C57E028F9B0B5005892AC /* Protocols */,
 				FF6C57D928F9ACC7005892AC /* Extensions */,
 				FF4732F128F8B52B005E271A /* Models */,
+				FF6C57E028F9B0B5005892AC /* Protocols */,
 				FF4732EA28F8B392005E271A /* Resources */,
 				FF4732EE28F8B42E005E271A /* Services */,
 			);
@@ -153,9 +178,9 @@
 		FF4732F128F8B52B005E271A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FF6C57E328F9B472005892AC /* Request Type */,
 				FF6C57DE28F9AF11005892AC /* Employee */,
 				FF6C57DF28F9AF1A005892AC /* Employee List */,
+				FF6C57E328F9B472005892AC /* Request Type */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +258,14 @@
 			path = "Employee Fetching";
 			sourceTree = "<group>";
 		};
+		FF6C57F528F9EB54005892AC /* SquareEmployeeDirectoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF6C57FD28F9EB62005892AC /* RequestTests.swift */,
+			);
+			path = SquareEmployeeDirectoryTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +286,24 @@
 			productReference = FF4732D128F8B359005E271A /* SquareEmployeeDirectory.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FF6C57F328F9EB53005892AC /* SquareEmployeeDirectoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF6C57FA28F9EB54005892AC /* Build configuration list for PBXNativeTarget "SquareEmployeeDirectoryTests" */;
+			buildPhases = (
+				FF6C57F028F9EB53005892AC /* Sources */,
+				FF6C57F128F9EB53005892AC /* Frameworks */,
+				FF6C57F228F9EB53005892AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF6C57F928F9EB54005892AC /* PBXTargetDependency */,
+			);
+			name = SquareEmployeeDirectoryTests;
+			productName = SquareEmployeeDirectoryTests;
+			productReference = FF6C57F428F9EB53005892AC /* SquareEmployeeDirectoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -265,6 +316,10 @@
 				TargetAttributes = {
 					FF4732D028F8B359005E271A = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					FF6C57F328F9EB53005892AC = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = FF4732D028F8B359005E271A;
 					};
 				};
 			};
@@ -282,6 +337,7 @@
 			projectRoot = "";
 			targets = (
 				FF4732D028F8B359005E271A /* SquareEmployeeDirectory */,
+				FF6C57F328F9EB53005892AC /* SquareEmployeeDirectoryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +349,13 @@
 			files = (
 				FF4732E128F8B35B005E271A /* LaunchScreen.storyboard in Resources */,
 				FF4732DE28F8B35B005E271A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF6C57F228F9EB53005892AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +383,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF6C57F028F9EB53005892AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF6C580028F9EC05005892AC /* Employee.swift in Sources */,
+				FF6C57FF28F9EB8C005892AC /* Request.swift in Sources */,
+				FF6C57FE28F9EB62005892AC /* RequestTests.swift in Sources */,
+				FF6C580128F9EC1C005892AC /* RequestType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF6C57F928F9EB54005892AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF4732D028F8B359005E271A /* SquareEmployeeDirectory */;
+			targetProxy = FF6C57F828F9EB54005892AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF4732DF28F8B35B005E271A /* LaunchScreen.storyboard */ = {
@@ -502,6 +584,42 @@
 			};
 			name = Release;
 		};
+		FF6C57FB28F9EB54005892AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JL6XT94C4X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thebabycompany.SquareEmployeeDirectoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareEmployeeDirectory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SquareEmployeeDirectory";
+			};
+			name = Debug;
+		};
+		FF6C57FC28F9EB54005892AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JL6XT94C4X;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thebabycompany.SquareEmployeeDirectoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquareEmployeeDirectory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SquareEmployeeDirectory";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,6 +637,15 @@
 			buildConfigurations = (
 				FF4732E628F8B35B005E271A /* Debug */,
 				FF4732E728F8B35B005E271A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF6C57FA28F9EB54005892AC /* Build configuration list for PBXNativeTarget "SquareEmployeeDirectoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF6C57FB28F9EB54005892AC /* Debug */,
+				FF6C57FC28F9EB54005892AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

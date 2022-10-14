@@ -32,11 +32,11 @@ extension Request {
     }
     
     func buildRequest(withBaseUrl baseURL: URL) -> URLRequest? {
-        guard var urlComponents = URLComponents(string: baseURL.absoluteString) else {
+        guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
             return nil
         }
         
-        urlComponents.path = "\(urlComponents.path)\(path)"
+        urlComponents.path = baseURL.path.appending(path)
         
         guard let finalURL = urlComponents.url else {
             return nil

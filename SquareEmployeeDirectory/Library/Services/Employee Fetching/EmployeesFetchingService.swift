@@ -55,13 +55,13 @@ private struct EmployeesListRequest: Request {
     var path: String {
         switch listType {
         case .normal:
-            return "employees.json"
+            return "/employees.json"
             
         case .empty:
-            return "employees_empty.json"
+            return "/employees_empty.json"
             
         case .malformed:
-            return "employees_malformed.json"
+            return "/employees_malformed.json"
             
         }
     }
