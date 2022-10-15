@@ -8,7 +8,7 @@
 import UIKit
 
 // TODO: Add Readme
-class EmployeeBoardViewController: UIViewController {
+class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDelegate {
     
 
     // MARK: - Section
@@ -113,20 +113,19 @@ class EmployeeBoardViewController: UIViewController {
     private func setupInterface() {
         title = Constants.NavigationTitle.default
         
-        setupToolbar()
+        setupNavigationBarActions()
         setupCollectionView()
         setupRefreshControl()
     }
     
-    private func setupToolbar() {
-        navigationController?.setToolbarHidden(false, animated: false)
-        toolbarItems = [
-            .init(title: "Normal List", style: .plain, target: self, action: #selector(handleFetchNormalListFetchTap(_:))),
-            .init(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            .init(title: "Malformed List", style: .plain, target: self, action: #selector(handleFetchMalformedListFetchTap(_:))),
-            .init(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            .init(title: "Empty List", style: .plain, target: self, action: #selector(handleFetchEmptyListFetchTap(_:))),
-        ]
+    private func setupNavigationBarActions() {
+        let button = UIButton(type: .system)
+        button.setTitle("Hold Me", for: .normal)
+
+        let interaction = UIContextMenuInteraction(delegate: self)
+        button.addInteraction(interaction)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     private func setupCollectionView() {
@@ -189,20 +188,43 @@ class EmployeeBoardViewController: UIViewController {
     
     // MARK: - Actions Handling
     
-    @objc private func handleFetchEmptyListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(listType: .empty)
-    }
-    
-    @objc private func handleFetchMalformedListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(listType: .malformed)
-    }
-    
-    @objc private func handleFetchNormalListFetchTap(_ sender: UIBarButtonItem) {
-        fetchEmployees(listType: .normal)
-    }
-    
     @objc private func handleRefreshControlValueChanged(_ refreshControl: UIRefreshControl) {
         fetchEmployees(listType: .normal)
+    }
+    
+    // MARK: - UIContextMenuInteractionDelegate
+    
+    func contextMenuInteraction(
+        _ interaction: UIContextMenuInteraction,
+        configurationForMenuAtLocation location: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
+            let fetchNormalListAction = UIAction(
+                title: "Normal List",
+                image:  UIImage(systemName: "arrow.up.square")
+            ) { action in
+                self.fetchEmployees(listType: .normal)
+            }
+            
+            let fetchMalformedListAction = UIAction(
+                title: "Malformed List",
+                image: UIImage(systemName: "plus.square.on.square")
+            ) { action in
+                self.fetchEmployees(listType: .malformed)
+            }
+            
+            let fetchEmptyListAction = UIAction(
+                title: "Empty List",
+                image:  UIImage(systemName: "trash")
+            ) { action in
+                self.fetchEmployees(listType: .empty)
+            }
+                                            
+            return UIMenu(
+                title: "What kind of list should be fetched???",
+                children: [fetchNormalListAction, fetchMalformedListAction, fetchEmptyListAction]
+            )
+        })
     }
     
 }
