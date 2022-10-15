@@ -199,29 +199,20 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
         configurationForMenuAtLocation location: CGPoint
     ) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
-            let fetchNormalListAction = UIAction(
-                title: "Normal List",
-                image:  UIImage(systemName: "arrow.up.square")
-            ) { action in
+            let fetchNormalListAction = UIAction(title: "Normal List") { action in
                 self.fetchEmployees(listType: .normal)
             }
             
-            let fetchMalformedListAction = UIAction(
-                title: "Malformed List",
-                image: UIImage(systemName: "plus.square.on.square")
-            ) { action in
+            let fetchMalformedListAction = UIAction(title: "Malformed List") { action in
                 self.fetchEmployees(listType: .malformed)
             }
             
-            let fetchEmptyListAction = UIAction(
-                title: "Empty List",
-                image:  UIImage(systemName: "trash")
-            ) { action in
+            let fetchEmptyListAction = UIAction(title: "Empty List") { action in
                 self.fetchEmployees(listType: .empty)
             }
                                             
             return UIMenu(
-                title: "What kind of list should be fetched???",
+                title: "What kind list fetch you want to simulate?",
                 children: [fetchNormalListAction, fetchMalformedListAction, fetchEmptyListAction]
             )
         })
