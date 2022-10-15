@@ -53,7 +53,7 @@ class EmployeeBoardViewController: UIViewController {
             contentConfiguration.imageProperties.reservedLayoutSize = Constants.EmployeeImage.maxSize
             contentConfiguration.imageProperties.cornerRadius = Constants.EmployeeImage.maxSize.width / 2
             
-            if let url = employee.photoURL {
+            if let url = employee.photoURLLarge ?? employee.photoURLSmall {
                 if let cachedImage = self.imageFetchingService.cachedImage(for: url) {
                     contentConfiguration.image = cachedImage
                 } else {
@@ -68,11 +68,6 @@ class EmployeeBoardViewController: UIViewController {
                             updatedSnapshot.reloadItems([employee])
                             self.dataSource.apply(updatedSnapshot, animatingDifferences: true)
                         }
-                        
-                        // contentConfiguration.image = image
-                        // DispatchQueue.main.async {
-                        //     cell?.contentConfiguration = contentConfiguration
-                        // }
                     }
                 }
             }

@@ -14,9 +14,9 @@ final class NetworkTests: XCTestCase {
     // MARK: - Private Properties
     
     let mockEmployees = [
-        Employee(id: "1", fullName: "R R", emailAddress: "sad1@email.com", team: "Test Team", type: "FULL_TIME"),
-        Employee(id: "2", fullName: "2 2", emailAddress: "sad2@email.com", team: "New Team", type: "FULL_TIME"),
-        Employee(id: "2", fullName: "2 2", emailAddress: "sad3@email.com", team: "Old Team", type: "FULL_TIME"),
+        Employee(id: "1", fullName: "R", emailAddress: "sad1@em.com", team: "Test", type: .fullTime),
+        Employee(id: "2", fullName: "2", emailAddress: "sad2@em.com", team: "New", type: .contractor),
+        Employee(id: "2", fullName: "2", emailAddress: "sad3@em.com", team: "Old", type: .partTime),
     ]
 
     

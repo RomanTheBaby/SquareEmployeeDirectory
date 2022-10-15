@@ -34,6 +34,10 @@
 		FF6C580A28FA26C5005892AC /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580828FA2670005892AC /* NSErrorExtension.swift */; };
 		FF6C580C28FA29EB005892AC /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580B28FA29EB005892AC /* MockURLSession.swift */; };
 		FF6C580D28FA2A8B005892AC /* EmployeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732F428F8BF96005E271A /* EmployeeList.swift */; };
+		FF6C580F28FA3966005892AC /* MockEmployeesArrayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C580E28FA3966005892AC /* MockEmployeesArrayRequest.swift */; };
+		FF6C581128FA3976005892AC /* MockEmployeesListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C581028FA3976005892AC /* MockEmployeesListRequest.swift */; };
+		FF6C581328FA3B4B005892AC /* URLSessionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C581228FA3B4B005892AC /* URLSessionCompatible.swift */; };
+		FF6C581428FA3B62005892AC /* URLSessionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C581228FA3B4B005892AC /* URLSessionCompatible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,9 @@
 		FF6C580628FA1F9D005892AC /* MockSingleEmployeeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleEmployeeRequest.swift; sourceTree = "<group>"; };
 		FF6C580828FA2670005892AC /* NSErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
 		FF6C580B28FA29EB005892AC /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		FF6C580E28FA3966005892AC /* MockEmployeesArrayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEmployeesArrayRequest.swift; sourceTree = "<group>"; };
+		FF6C581028FA3976005892AC /* MockEmployeesListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEmployeesListRequest.swift; sourceTree = "<group>"; };
+		FF6C581228FA3B4B005892AC /* URLSessionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionCompatible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				FF6C57E128F9B0BE005892AC /* Request.swift */,
+				FF6C581228FA3B4B005892AC /* URLSessionCompatible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -284,6 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				FF6C580628FA1F9D005892AC /* MockSingleEmployeeRequest.swift */,
+				FF6C581028FA3976005892AC /* MockEmployeesListRequest.swift */,
+				FF6C580E28FA3966005892AC /* MockEmployeesArrayRequest.swift */,
 				FF6C580B28FA29EB005892AC /* MockURLSession.swift */,
 			);
 			path = "Models Mocks";
@@ -401,6 +411,7 @@
 				FF6C57E228F9B0BE005892AC /* Request.swift in Sources */,
 				FF6C57E528F9B477005892AC /* RequestType.swift in Sources */,
 				FF6C57E728F9CBC1005892AC /* ImageFetchingService.swift in Sources */,
+				FF6C581328FA3B4B005892AC /* URLSessionCompatible.swift in Sources */,
 				FF4732D728F8B359005E271A /* SceneDelegate.swift in Sources */,
 				FF6C57DB28F9ACD4005892AC /* NSLayoutConstraintExtension.swift in Sources */,
 				FF6C57E928F9DDBB005892AC /* ImagePersistanceService.swift in Sources */,
@@ -418,8 +429,11 @@
 				FF6C57FE28F9EB62005892AC /* RequestTests.swift in Sources */,
 				FF6C580428F9F3A3005892AC /* NetworkService.swift in Sources */,
 				FF6C580C28FA29EB005892AC /* MockURLSession.swift in Sources */,
+				FF6C581128FA3976005892AC /* MockEmployeesListRequest.swift in Sources */,
 				FF6C580D28FA2A8B005892AC /* EmployeeList.swift in Sources */,
 				FF6C580128F9EC1C005892AC /* RequestType.swift in Sources */,
+				FF6C581428FA3B62005892AC /* URLSessionCompatible.swift in Sources */,
+				FF6C580F28FA3966005892AC /* MockEmployeesArrayRequest.swift in Sources */,
 				FF6C580728FA1F9D005892AC /* MockSingleEmployeeRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

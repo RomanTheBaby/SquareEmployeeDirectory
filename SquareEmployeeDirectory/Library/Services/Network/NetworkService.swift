@@ -8,26 +8,6 @@
 import Foundation
 
 
-// TODO: Come up with better name
-protocol URLSessionCompatible {
-    func makeRequest(
-        _ request: URLRequest,
-        completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void
-    )
-}
-
-
-extension URLSession: URLSessionCompatible {
-    func makeRequest(
-        _ request: URLRequest,
-        completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void
-    ) {
-        let dataTask = dataTask(with: request, completionHandler: completionHandler)
-        dataTask.resume()
-    }
-    
-}
-
 class NetworkService {
     
     

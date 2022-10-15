@@ -9,24 +9,24 @@ import Foundation
 
 
 struct Employee: Hashable, Identifiable, Codable, Equatable {
-     
+    
     var id: String
     var fullName: String
     var phoneNumber: String?
     var emailAddress: String
     var biography: String?
-    var photoURLSmall: String?
-    var photoURLLarge: String?
+    var photoURLSmall: URL?
+    var photoURLLarge: URL?
     var team: String
-    var type: String // TODO
+    var type: EmployeeType
     
     
-    var photoURL: URL? {
-        guard let rawImageLink = photoURLLarge ?? photoURLSmall else {
-            return nil
-        }
-        
-        return URL(string: rawImageLink)
+    // MARK: - Type
+    
+    enum EmployeeType: String, Hashable, Equatable, Codable {
+        case fullTime = "FULL_TIME"
+        case partTime = "PART_TIME"
+        case contractor = "CONTRACTOR"
     }
     
     
@@ -44,13 +44,36 @@ struct Employee: Hashable, Identifiable, Codable, Equatable {
         case type = "employee_type"
     }
     
-//    "uuid" : "some-uuid",
-//    "full_name" : "Eric Rogers",
-//    "phone_number" : "5556669870",
-//    "email_address" : "erogers.demo@squareup.com",
-//    "biography" : "A short biography describing the employee.",
-//    "photo_url_small" : "https://some.url/path1.jpg",
-//    "photo_url_large" : "https://some.url/path2.jpg",
-//    "team" : "Seller",
-//    "employee_type" : "FULL_TIME",
+}
+    
+extension Employee {
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(String.self, forKey: .id)
+        self.fullName = try container.decode(String.self, forKey: .fullName)
+        self.phoneNumber = try? container.decodeIfPresent(String.self, forKey: .phoneNumber)
+        self.emailAddress = try container.decode(String.self, forKey: .emailAddress)
+        self.biography = try container.decodeIfPresent(String.self, forKey: .biography)
+        
+        if let rawPhotoURLSmall = try? container.decodeIfPresent(String.self, forKey: .photoURLSmall) {
+            self.photoURLSmall = URL(string: rawPhotoURLSmall)
+        }
+        
+        if let rawPhotoURLLarge = try? container.decodeIfPresent(String.self, forKey: .photoURLLarge) {
+            self.photoURLLarge = URL(string: rawPhotoURLLarge)
+        }
+        
+        self.team = try container.decode(String.self, forKey: .team)
+        
+        let rawType = try container.decode(String.self, forKey: .type)
+        
+        if let type = EmployeeType(rawValue: rawType) {
+            self.type = type
+        } else {
+            throw NSError(code: 502, localizedDescription: "Not supported employee type: \(rawType)")
+        }
+    }
+    
 }
