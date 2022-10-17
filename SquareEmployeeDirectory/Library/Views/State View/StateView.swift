@@ -21,8 +21,13 @@ class StateView: UIView {
     // MARK: - Constants
     
     private enum Constants {
-        enum Text {
-            static let horizontalInsets: CGFloat = 16
+        enum Layout {
+            static let textHorizontalInsets: CGFloat = 16
+        }
+        
+        enum DefaultTitles {
+            static let noContent = "No content to display"
+            static let loadingContent = "Loading data..."
         }
     }
     
@@ -74,8 +79,8 @@ class StateView: UIView {
         addSubview(titleLabel)
         
         [
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Text.horizontalInsets),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Text.horizontalInsets),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Layout.textHorizontalInsets),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Layout.textHorizontalInsets),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ].activate()
