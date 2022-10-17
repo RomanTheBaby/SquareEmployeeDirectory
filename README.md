@@ -4,9 +4,10 @@ Language, frameworks: UIKit, Swift
 
 ## Steps to run the app
 1. Download&Install Xcode
-2. Open `SquareEmployeeDirectory.xcodeproj` file from root folder
-3. Press Command+R or Play button in the top right part of the Xcode UI
-4. Profit
+2. Unzip archive with project or download project form github
+3. Open `SquareEmployeeDirectory.xcodeproj` file from root folder
+4. Press Command+R or Play button in the top right part of the Xcode UI
+5. Profit
 
 ## What areas of the app did you focus on?
 1. Core UI
