@@ -34,6 +34,8 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
     
     // MARK: - Private Properties
     
+    private lazy var emptyStateView = StateView()
+    
     private lazy var collectionView: UICollectionView = {
         let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
@@ -116,6 +118,7 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
         setupNavigationBarActions()
         setupCollectionView()
         setupRefreshControl()
+        setupStateView()
     }
     
     private func setupNavigationBarActions() {
@@ -142,6 +145,18 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
         ].activate()
     }
     
+    private func setupStateView() {
+        view.addSubview(emptyStateView)
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        
+        [
+            emptyStateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            emptyStateView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ].activate()
+    }
+    
     private func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefreshControlValueChanged(_:)), for: .valueChanged)
@@ -150,31 +165,44 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
     }
     
     private func fetchEmployees(listType: EmployeesFetchingService.ListType = .normal) {
-        title = Constants.NavigationTitle.loading
+        if dataSource.snapshot().numberOfItems > 0 {
+            title = Constants.NavigationTitle.loading
+        } else {
+            emptyStateView.adjust(forState: .loadingContent)
+        }
         
         employeesFetchingService.fetchEmployees(listType: listType) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case let .failure(error):
-                    self?.showAlert(
-                        title: "Error fetching Employees List",
-                        message: error.localizedDescription,
-                        actions: [
-                            .init(title: "Clear current list?", style: .default, handler: { _ in
-                                self?.updateSnapshot(with: [])
-                            }),
-                        ]
-                    )
+                    self?.hanleFetchError(error)
+                    self?.setStateViewEmptyIfNeeded()
                     
                 case let .success(employeeList):
                     self?.updateSnapshot(with: employeeList.employees)
                 }
                 
-                self?.title = "Employee Board"
+                self?.title = Constants.NavigationTitle.default
                 self?.collectionView.refreshControl?.endRefreshing()
             }
         }
+    }
+    
+    private func hanleFetchError(_ error: Error) {
+        var alertActions: [UIAlertAction] = []
         
+        if dataSource.snapshot().numberOfItems > 0 {
+            alertActions.append(
+                .init(title: "Clear current list?", style: .default, handler: { _ in
+                self.updateSnapshot(with: [])
+            }))
+        }
+        
+        showAlert(
+            title: "Error fetching Employees List",
+            message: error.localizedDescription,
+            actions:alertActions
+        )
     }
     
     private func updateSnapshot(with employees: [Employee]) {
@@ -183,6 +211,17 @@ class EmployeeBoardViewController: UIViewController, UIContextMenuInteractionDel
         snapshot.appendItems(employees)
         
         dataSource.apply(snapshot)
+        
+        setStateViewEmptyIfNeeded()
+    }
+    
+    private func setStateViewEmptyIfNeeded() {
+        if dataSource.snapshot().numberOfItems == 0 {
+            emptyStateView.adjust(forState: .noContent)
+            emptyStateView.isHidden = false
+        } else {
+            emptyStateView.isHidden = true
+        }
     }
     
     

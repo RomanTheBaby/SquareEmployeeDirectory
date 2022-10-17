@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF41FAAA28FDD83D00BBA3C1 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41FAA928FDD83D00BBA3C1 /* StateView.swift */; };
 		FF4732D528F8B359005E271A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D428F8B359005E271A /* AppDelegate.swift */; };
 		FF4732D728F8B359005E271A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D628F8B359005E271A /* SceneDelegate.swift */; };
 		FF4732D928F8B359005E271A /* EmployeeBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4732D828F8B359005E271A /* EmployeeBoardViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF41FAA928FDD83D00BBA3C1 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		FF4732D128F8B359005E271A /* SquareEmployeeDirectory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareEmployeeDirectory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4732D428F8B359005E271A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4732D628F8B359005E271A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF41FAAB28FDDE6E00BBA3C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF41FAAC28FDDE7300BBA3C1 /* State View */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF41FAAC28FDDE7300BBA3C1 /* State View */ = {
+			isa = PBXGroup;
+			children = (
+				FF41FAA928FDD83D00BBA3C1 /* StateView.swift */,
+			);
+			path = "State View";
+			sourceTree = "<group>";
+		};
 		FF4732C828F8B359005E271A = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 				FF6C57E028F9B0B5005892AC /* Protocols */,
 				FF4732EA28F8B392005E271A /* Resources */,
 				FF4732EE28F8B42E005E271A /* Services */,
+				FF41FAAB28FDDE6E00BBA3C1 /* Views */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -400,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4732D928F8B359005E271A /* EmployeeBoardViewController.swift in Sources */,
+				FF41FAAA28FDD83D00BBA3C1 /* StateView.swift in Sources */,
 				FF4732D528F8B359005E271A /* AppDelegate.swift in Sources */,
 				FF6C580928FA2670005892AC /* NSErrorExtension.swift in Sources */,
 				FF6C57DD28F9ACEE005892AC /* UIViewControllerExtension.swift in Sources */,
